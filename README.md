@@ -3,6 +3,12 @@
 #### proxy
 > A plugin for [Oh My Fish][omf-link].
 
+[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE)
+[![Fish Shell Version](https://img.shields.io/badge/fish-v2.2.0-007EC7.svg?style=flat-square)](http://fishshell.com)
+[![Oh My Fish Framework](https://img.shields.io/badge/Oh%20My%20Fish-Framework-007EC7.svg?style=flat-square)](https://www.github.com/oh-my-fish/oh-my-fish)
+
+<br/>
+
 The proxy plugin provides a couple helper functions to those of us who are
 stuck behind HTTP/HTTPS/FTP proxies that require authentication.  The variables
 it exports are used by many command-line and GUI applications on Linux, as well
@@ -17,11 +23,6 @@ good place to start.
 [homebrew]:         http://brew.sh/
 [archwiki-article]: https://wiki.archlinux.org/index.php/proxy_settings
 
-[![MIT License](https://img.shields.io/badge/license-MIT-007EC7.svg?style=flat-square)](/LICENSE)
-[![Fish Shell Version](https://img.shields.io/badge/fish-v2.2.0-007EC7.svg?style=flat-square)](http://fishshell.com)
-[![Oh My Fish Framework](https://img.shields.io/badge/Oh%20My%20Fish-Framework-007EC7.svg?style=flat-square)](https://www.github.com/oh-my-fish/oh-my-fish)
-
-<br/>
 
 ## Install
 
@@ -55,7 +56,7 @@ The proxy plugin will prepend `http://` for you.  Here's the result:
 
 ### With authentication
 
-Set your proxy host and username:
+Set your proxy host and username in `$OMF_CONFIG/before.init.fish`:
 
 ```fish
 set proxy_host myproxy.example.com:8000
@@ -69,9 +70,6 @@ If you didn't setup a proxy_user variable, you will be prompted for a username.
 
 If you wish to clear your proxy variables, run `noproxy`.
 
-```fish
-$ proxy
-```
 
 # License
 
