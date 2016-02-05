@@ -1,4 +1,4 @@
-function _proxy_set -a proxy \
+function __proxy.set -a proxy \
   -d "Set all proxy vars to specified value"
 
   set -l envars http_proxy HTTP_PROXY \
