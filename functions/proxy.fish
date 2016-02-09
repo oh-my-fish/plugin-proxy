@@ -20,6 +20,6 @@ function proxy -d "Setup proxy environment variables"
   set -l chars (echo $pass | sed -E -e 's/./\n\\0/g;/^$/d;s/\n//')
   printf '%%%02x' "'"$chars"'" | read -l encpass
 
-  _proxy_set "http://$user:$encpass@$proxy_host"
+  __proxy.set "http://$user:$encpass@$proxy_host"
 end
 
