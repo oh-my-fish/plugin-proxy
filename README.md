@@ -36,10 +36,12 @@ $ omf install proxy
 ### No authentication
 
 If you just want to have the proxy plugin configure all the environment
-variables, you may set proxy_host in `$OMF_CONFIG/before.init.fish`:
+variables, you may set proxy_host and proxy_auth in
+`$OMF_CONFIG/before.init.fish`:
 
 ```fish
 set proxy_host myproxy.example.com:8000
+set proxy_auth false
 ```
 
 The proxy plugin will prepend `http://` for you.  Here's the result:
@@ -60,6 +62,7 @@ Set your proxy host and username in `$OMF_CONFIG/before.init.fish`:
 
 ```fish
 set proxy_host myproxy.example.com:8000
+set proxy_auth true
 set proxy_user mylogin
 ```
 
