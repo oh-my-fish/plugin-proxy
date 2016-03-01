@@ -5,7 +5,7 @@ function proxy -d "Setup proxy environment variables"
     return
   end
 
-  if eval $proxy_auth
+  if test "$proxy_auth" = "true"
     # Get user & password
     set -l user $proxy_user
     if not set -q proxy_user
