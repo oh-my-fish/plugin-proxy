@@ -9,7 +9,7 @@ function __proxy.set -a proxy \
     if test $proxy = '-e'
       set -e $envar
     else
-      set -gx $envar $proxy
+      set -Ux $envar $proxy
     end
   end
 end
