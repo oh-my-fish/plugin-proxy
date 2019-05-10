@@ -11,15 +11,20 @@ function proxy -d "Setup proxy environment variables"
     if not set -q proxy_user
       read -p "echo -n 'Proxy User: '" user
     end
-    # Hacky way to read password in fish
-    echo -n 'Proxy Password: '
-    stty -echo
-    head -n 1 | read -l pass
-    stty echo
-    echo
+    # Read password from different source
+    switch (uname)
+      case Darwin
+        set -l proxy_domain (string split -r -m 1 : "$proxy_host" | head -1)
+        set pass (security find-internet-password -a "$proxy_user" -ws "$proxy_domain")
+        if test $status -ne 0
+          echo "Unable to find proxy password in keychain"
+          read -sp "echo -n 'Proxy password: '" pass
+        end
+      case '*'
+        read -sp "echo -n 'Proxy password: '" pass
+    end
     # URL encode password
-    set -l chars (echo $pass | sed -E -e 's/./\n\\0/g;/^$/d;s/\n//')
-    printf '%%%02x' "'"$chars"'" | read -l encpass
+    set -l encpass (string escape --style=url "$pass")
 
     __proxy.set "http://$user:$encpass@$proxy_host"
   else
