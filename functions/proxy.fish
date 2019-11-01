@@ -21,7 +21,7 @@ function proxy -d "Setup proxy environment variables"
           read -sp "echo -n 'Proxy password: '" pass
         end
       case '*'
-        read -sp "echo -n 'Proxy password: '" pass
+        read -sip "echo -n 'Proxy password: '" pass
     end
     # URL encode password
     set -l encpass (string escape --style=url "$pass")
